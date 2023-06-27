@@ -6,7 +6,7 @@
 /*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:07:48 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/22 12:35:03 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:10:01 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	display_nor(t_stack *stack)
 		printf("%d, ",stack->value);
 		stack = stack->next;
 	}
-	printf("\n--------Dsiplay B NO ||---------\n");
+	printf("\n--------------|STACK|---------------\n");
 }
 
 int	count_move_to_do_from_top(t_stack *stack_b, int value_to_searsh)
@@ -37,42 +37,59 @@ int	count_move_to_do_from_top(t_stack *stack_b, int value_to_searsh)
 	return (count);
 }
 
+void	sort_left_stack_a(t_stack **stack_a)
+{
+	int count;
+
+	count = count_move_to_do(*stack_a);
+	if (count == 2)
+		algo_for_2(stack_a);
+	else if (count == 3)
+		algo_for_3(stack_a);
+}
+
+void	handle_instruction_push_to_a(t_stack **stack_b, t_stack **stack_a, int max)
+{
+	int top_count_to_max;
+	int button_count_to_max;
+
+	top_count_to_max = count_move_to_do_from_top(*stack_b, max);
+	button_count_to_max = count_move_to_do(*stack_b) - top_count_to_max;
+	if (top_count_to_max > button_count_to_max)
+	{
+		while (button_count_to_max --)
+			rrb(stack_b);
+	}
+	else
+	{
+		while (top_count_to_max --)
+			rb(stack_b);
+	}
+	pa(stack_a, stack_b);
+}
+
 void	push_back_to_stack_a(t_stack **stack_a, t_stack *stack_b, \
 int **chunks, int size_of_chunk)
 {
-	int	top_count = 0;
-	int	button_count = 0;
 	int	i;
 	int	index_current_max;
-	int	index_current_max_prev;
 
 	i = 3;
+	sort_left_stack_a(stack_a);
 	while (i >= 0)
 	{
 		index_current_max = size_of_chunk - 1;
 		while (index_current_max >= 0)
 		{
-			printf("\n-------------|STACK A|------------\n");
-			display_nor(*stack_a);
-			top_count = count_move_to_do_from_top(stack_b, \
-			chunks[i][index_current_max]);
-			button_count = count_move_to_do(stack_b) - top_count;
-			if (top_count > button_count)
-				while (button_count --)
-					rrb(&stack_b);
-			else
-				while (top_count --)
-					rb(&stack_b);
-			pa(stack_a, &stack_b);
+			handle_instruction_push_to_a(&stack_b, stack_a, chunks[i][index_current_max]);
 			index_current_max --;
 		}
 		i --;
 	}
 }
 
-void	algo_for_100(t_stack **stack)
+void	algo_for_100(t_stack **stack, t_stack *stack_b)
 {
-	t_stack	*stack_b;
 	int		*array;
 	int		**split_array_chunks;
 	int		size_of_arrays;
@@ -82,7 +99,7 @@ void	algo_for_100(t_stack **stack)
 	stack_b = NULL;
 	array = sort_in_array(*stack);
 	size_of_arrays = count_elements_alloc(*stack);
-	split_array_chunks = split_array(array, size_of_arrays);
+	split_array_chunks = split_array(array, size_of_arrays, (*stack));
 	while (i < 4)
 	{
 		push_to_stack_b(stack, &stack_b, split_array_chunks[i ++], \

@@ -12,10 +12,8 @@
 
 #include "push_swap.h"
 
-void	algo_for_5(t_stack **stack)
+void	algo_for_5(t_stack **stack, t_stack *stack_b)
 {
-	t_stack	*stack_b;
-
 	pb(&stack_b, stack);
 	pb(&stack_b, stack);
 	algo_for_3(stack);

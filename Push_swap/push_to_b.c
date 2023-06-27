@@ -25,23 +25,19 @@ int	count_move_to_do(t_stack *stack)
 	return (i);
 }
 
-int	*set_array(int *a, int start, int lenght)
+int	*set_array(int *a, int start_index, int lenght)
 {
 	int	*array;
 	int	i;
-	int	y;
 
 	array = (int *) malloc(sizeof(int) * lenght);
-	i = start;
-	y = 0;
-	while (i < (lenght + start))
-	{
-		array[y ++] = a[i ++];
-	}
+	i = 0;
+	while (i < lenght)
+		array[i ++] = a[start_index ++];
 	return (array);
 }
 
-int	**split_array(int *a, int size_of_array)
+int	**split_array(int *a, int size_of_array, t_stack *stack_a)
 {
 	int		**split;
 	int		i;
@@ -71,9 +67,7 @@ int *chunk, int size_of_chunk)
 	{
 		if ((*stack_a)->value <= chunk[size_of_chunk - 1] && \
 		(*stack_a)->value > (chunk[(size_of_chunk - 1)] / 2))
-		{
 			pb(stack_b, stack_a);
-		}
 		else if ((*stack_a)->value <= (chunk[(size_of_chunk - 1)] / 2) && \
 		(*stack_a)->value >= chunk[0])
 		{
@@ -81,9 +75,7 @@ int *chunk, int size_of_chunk)
 			rb(stack_b);
 		}
 		else
-		{
 			ra(stack_a);
-		}
 	}
 }
 

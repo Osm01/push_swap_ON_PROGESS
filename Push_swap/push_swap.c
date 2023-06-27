@@ -36,18 +36,16 @@ int	main(int argc, char const *argv[])
 		ft_lstadd_back(&t_sa, ft_lstnew(ft_atoi(argv[i])));
 		i ++;
 	}
-	i = 10;
-	while (i <= 50)
-	{
-		ft_lstadd_back(&t_sb, ft_lstnew(i));
-		i += 10;
-	}
-	if (argc == 4)
+	if (argc == 3)
+		algo_for_2(&t_sa);
+	else if (argc == 4)
 		algo_for_3(&t_sa);
+	else if (argc == 5)
+		algo_for_4(&t_sa, t_sb);
 	else if (argc == 6)
-		algo_for_5(&t_sa);
+		algo_for_5(&t_sa, t_sb);
 	else if (argc <= 101)
-		algo_for_100(&t_sa);
+		algo_for_100(&t_sa, t_sb);
 	printf("\n--------Display A------\n");
 	display(t_sa);
 	/*printf("\n--------Display B------\n");

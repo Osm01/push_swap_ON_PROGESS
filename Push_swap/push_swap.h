@@ -38,14 +38,16 @@ void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	pa(t_stack **dst, t_stack **src);
 void	pb(t_stack **dst, t_stack **src);
+void	algo_for_2(t_stack **stack);
 void	algo_for_3(t_stack **stack);
-void	algo_for_5(t_stack **stack);
+void	algo_for_4(t_stack **stack, t_stack *stack_b);
+void	algo_for_5(t_stack **stack, t_stack *stack_b);
 int		ft_printf(const char *str, ...);
-void	algo_for_100(t_stack **stack);
+void	algo_for_100(t_stack **stack, t_stack *t_sb);
 int		count_move_to_do(t_stack *stack);
 int		*sort_in_array(t_stack *stack);
 int		count_elements_alloc(t_stack *stack);
 void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b, \
 		int *chunk, int size_of_chunk);
-int		**split_array(int *a, int size_of_array);
+int		**split_array(int *a, int size_of_array, t_stack *stack_a);
 #endif
