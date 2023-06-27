@@ -37,7 +37,7 @@ int	count_move_to_do_from_top(t_stack *stack_b, int value_to_searsh)
 	return (count);
 }
 
-void	sort_left_stack_a(t_stack **stack_a)
+void	sort_left_stack_a(t_stack **stack_a, t_stack *stack_b)
 {
 	int count;
 
@@ -46,26 +46,40 @@ void	sort_left_stack_a(t_stack **stack_a)
 		algo_for_2(stack_a);
 	else if (count == 3)
 		algo_for_3(stack_a);
+	else if (count == 5)
+		algo_for_5(stack_a, stack_b);
 }
 
-void	handle_instruction_push_to_a(t_stack **stack_b, t_stack **stack_a, int max)
+void	move_stack_b_to_push_to_a(t_stack **stack_b, t_stack **stack_a, int top_count_to_max, int button_count_to_max)
 {
-	int top_count_to_max;
-	int button_count_to_max;
-
-	top_count_to_max = count_move_to_do_from_top(*stack_b, max);
-	button_count_to_max = count_move_to_do(*stack_b) - top_count_to_max;
-	if (top_count_to_max > button_count_to_max)
-	{
-		while (button_count_to_max --)
-			rrb(stack_b);
-	}
-	else
+	if (top_count_to_max < button_count_to_max)
 	{
 		while (top_count_to_max --)
 			rb(stack_b);
 	}
+	else
+	{
+		while (button_count_to_max --)
+			rrb(stack_b);
+	}
 	pa(stack_a, stack_b);
+}
+
+void	handle_instruction_push_to_a(t_stack **stack_b, t_stack **stack_a, int max, int max_prev)
+{
+	int top_count_to_max;
+	int button_count_to_max;
+	int top_count_to_max_prev;
+	int button_count_to_max_prev;
+
+	top_count_to_max = count_move_to_do_from_top(*stack_b, max);
+	button_count_to_max = count_move_to_do(*stack_b) - top_count_to_max;
+	top_count_to_max_prev = count_move_to_do_from_top(*stack_b, max_prev);
+	button_count_to_max_prev = count_move_to_do(*stack_b) - top_count_to_max_prev;
+	if (top_count_to_max < top_count_to_max_prev)
+		move_stack_b_to_push_to_a(stack_b, stack_a,top_count_to_max, button_count_to_max);
+	else
+		move_stack_b_to_push_to_a(stack_b, stack_a,top_count_to_max_prev, button_count_to_max_prev);
 }
 
 void	push_back_to_stack_a(t_stack **stack_a, t_stack *stack_b, \
@@ -73,16 +87,21 @@ int **chunks, int size_of_chunk)
 {
 	int	i;
 	int	index_current_max;
+	int	index_current_max_prev;
 
 	i = 3;
-	sort_left_stack_a(stack_a);
+	sort_left_stack_a(stack_a, stack_b);
 	while (i >= 0)
 	{
 		index_current_max = size_of_chunk - 1;
+		index_current_max_prev = index_current_max - 1;
 		while (index_current_max >= 0)
 		{
-			handle_instruction_push_to_a(&stack_b, stack_a, chunks[i][index_current_max]);
-			index_current_max --;
+			if (index_current_max_prev < 0)
+				index_current_max_prev = 0;
+			handle_instruction_push_to_a(&stack_b, stack_a, chunks[i][index_current_max], chunks[i][index_current_max_prev]);
+			index_current_max = index_current_max - 1;
+			index_current_max_prev = index_current_max - 1;
 		}
 		i --;
 	}
