@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:18:57 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/22 18:33:56 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:11:17 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	pa(t_stack **dst, t_stack **src);
 void	pb(t_stack **dst, t_stack **src);
 void	algo_for_2(t_stack **stack);
 void	algo_for_3(t_stack **stack);
-void	algo_for_4(t_stack **stack, t_stack *stack_b);
-void	algo_for_5(t_stack **stack, t_stack *stack_b);
+void	algo_for_5_and_4(t_stack **stack, t_stack *stack_b);
 int		ft_printf(const char *str, ...);
 void	algo_for_100(t_stack **stack, t_stack *t_sb);
 int		count_move_to_do(t_stack *stack);
@@ -50,4 +49,6 @@ int		count_elements_alloc(t_stack *stack);
 void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b, \
 		int *chunk, int size_of_chunk);
 int		**split_array(int *a, int size_of_array, t_stack *stack_a);
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif

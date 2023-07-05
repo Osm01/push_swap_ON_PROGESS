@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_for_100.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:07:48 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/24 14:10:01 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:20:33 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_left_stack_a(t_stack **stack_a, t_stack *stack_b)
 	else if (count == 3)
 		algo_for_3(stack_a);
 	else if (count == 5)
-		algo_for_5(stack_a, stack_b);
+		algo_for_5_and_4(stack_a, stack_b);
 }
 
 void	move_stack_b_to_push_to_a(t_stack **stack_b, t_stack **stack_a, int top_count_to_max, int button_count_to_max)

@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:17:58 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/27 17:23:03 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/05 12:19:55 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	ft__strlen(char const *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i ++;
+	}
+	return (i);
+}
 
 size_t	count_element_split_by(char const *s, char c)
 {
@@ -66,7 +78,7 @@ char	**ft_split(char const *s, char c)
 	if (!split)
 		return (0);
 	split[count_element_split_by(s, c)] = (char *) NULL;
-	while (y < ft_strlen(s))
+	while (y < ft__strlen(s))
 	{
 		if (s[y] != c)
 		{
