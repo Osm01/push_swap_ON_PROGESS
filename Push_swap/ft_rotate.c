@@ -15,7 +15,6 @@
 void	rotate(t_stack **stack)
 {
 	t_stack	*rot;
-	t_stack	*tmp;
 
 	if (!stack || (*stack)->next == NULL)
 		return ;
@@ -28,11 +27,11 @@ void	rotate(t_stack **stack)
 void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
-	printf("rb\n");
+	ft_printf("rb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:03:40 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/16 11:03:58 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:14:28 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*first;
 
-	if (!stack)
+    last = NULL;
+    first = NULL;
+	if (!stack || !(*stack))
 		return ;
 	last = ft_lstlast(*stack);
 	first = (*stack);
+	if (!first || !last)
+		return ;
 	(*stack) = last;
 	last->next = first;
 	last->prev->next = NULL;

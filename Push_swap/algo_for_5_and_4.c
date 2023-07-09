@@ -14,7 +14,7 @@
 
 int	count_move_to_get_min(t_stack *stack_a)
 {
-	int	min_stack;
+	int		min_stack;
 	int		count;
 	int		i;
 
@@ -50,6 +50,7 @@ void	algo_for_5_and_4(t_stack **stack, t_stack *stack_b)
 	int	move_to_do;
 
 	count = count_move_to_do(*stack);
+	move_to_do = 0;
 	if (count == 4)
 		move_to_do = 1;
 	else if (count == 5)

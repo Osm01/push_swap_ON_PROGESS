@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_for_100.c                                     :+:      :+:    :+:   */
+/*   algo_for_500.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 19:07:48 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/30 13:20:33 by chdid            ###   ########.fr       */
+/*   Created: 2023/07/07 15:36:16 by ouidriss          #+#    #+#             */
+/*   Updated: 2023/07/07 15:36:26 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_back_to_stack_a(t_stack **stack_a, t_stack *stack_b, \
+void	push_back_to_stack_a_500(t_stack **stack_a, t_stack *stack_b, \
 int **chunks, int size_of_chunk)
 {
 	int	i;
@@ -20,7 +20,7 @@ int **chunks, int size_of_chunk)
 	int	index_current_max_prev;
 	int	re;
 
-	i = 3;
+	i = 8;
 	sort_left_stack_a(stack_a, stack_b);
 	while (i >= 0)
 	{
@@ -53,7 +53,7 @@ int **chunks, int size_of_chunk)
 	}
 }
 
-void	algo_for_100(t_stack **stack, t_stack *stack_b)
+void	algo_for_500(t_stack **stack, t_stack *stack_b)
 {
 	int		*array;
 	int		**split_array_chunks;
@@ -62,14 +62,15 @@ void	algo_for_100(t_stack **stack, t_stack *stack_b)
 
 	stack_b = NULL;
 	array = sort_in_array(*stack);
+
 	size_of_arrays = count_elements_alloc(*stack);
-	split_array_chunks = split_array_by_4(array, size_of_arrays);
+	split_array_chunks = split_array_by_9(array, size_of_arrays);
 	i = 0;
-	while (i < 4)
+	while (i < 9)
 	{
 		push_to_stack_b(stack, &stack_b, split_array_chunks[i ++], \
-		(size_of_arrays / 4));
+		(size_of_arrays / 9));
 	}
-	push_back_to_stack_a(stack, stack_b, split_array_chunks, \
-	(size_of_arrays / 4));
+	push_back_to_stack_a_500(stack, stack_b, split_array_chunks, \
+	(size_of_arrays / 9));
 }

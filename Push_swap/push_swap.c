@@ -16,7 +16,7 @@ void	display(t_stack *stack)
 {
 	while (stack)
 	{
-		printf("=>%d\n" ,stack->value);
+		ft_printf("=>%d\n" ,stack->value);
 		stack = stack->next;
 	}
 }
@@ -24,7 +24,7 @@ void	display(t_stack *stack)
 int	main(int argc, char const *argv[])
 {
 	t_stack	*t_sa;
-	t_stack *t_sb;
+	t_stack	*t_sb;
 	char	**arguments;
 	int		i;
 	int		y;
@@ -32,6 +32,8 @@ int	main(int argc, char const *argv[])
 	i = 1;
 	t_sa = NULL;
 	t_sb = NULL;
+	if (check_integer(argc, argv) || argc == 1)
+		return (ft_printf("Error\n"), EXIT_FAILURE);
 	while (i < argc)
 	{
 		arguments = ft_split(argv[i], 32);
@@ -40,6 +42,8 @@ int	main(int argc, char const *argv[])
 			ft_lstadd_back(&t_sa, ft_lstnew(ft_atoi(arguments[y++])));
 		i ++;
 	}
+	if (check_duplicate(t_sa))
+		return (ft_printf("Error\n"), EXIT_FAILURE);
 	i = count_elements_alloc(t_sa);
 	if (i == 2)
 		algo_for_2(&t_sa);
@@ -49,7 +53,7 @@ int	main(int argc, char const *argv[])
 		algo_for_5_and_4(&t_sa, t_sb);
 	else if (i <= 100)
 		algo_for_100(&t_sa, t_sb);
-	printf("\n--------Display A------\n");
-	display(t_sa);
+	else if (i <= 500)
+		algo_for_500(&t_sa, t_sb);
 	return (0);
 }

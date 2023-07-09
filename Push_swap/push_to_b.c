@@ -6,7 +6,7 @@
 /*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 18:27:50 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/22 18:27:55 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:30:58 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	*set_array(int *a, int start_index, int lenght)
 	return (array);
 }
 
-int	**split_array(int *a, int size_of_array, t_stack *stack_a)
+int	**split_array_by_4(int *a, int size_of_array)
 {
 	int		**split;
 	int		i;
@@ -55,6 +55,24 @@ int	**split_array(int *a, int size_of_array, t_stack *stack_a)
 	return (split);
 }
 
+int	**split_array_by_9(int *a, int size_of_array)
+{
+	int		**split;
+	int		i;
+	int		start;
+
+	split = (int **)malloc(sizeof(int *) * 9);
+	i = 0;
+	start = 0;
+	while (i < 9)
+	{
+		split[i] = set_array(a, start, (size_of_array / 9));
+		start += (size_of_array / 9);
+		i ++;
+	}
+	return (split);
+}
+
 void	push_to_stack_b(t_stack **stack_a, t_stack **stack_b, \
 int *chunk, int size_of_chunk)
 {
@@ -66,10 +84,10 @@ int *chunk, int size_of_chunk)
 	while (i++ < count)
 	{
 		if ((*stack_a)->value <= chunk[size_of_chunk - 1] && \
-		(*stack_a)->value > (chunk[(size_of_chunk - 1)] / 2))
+		(*stack_a)->value > chunk[(size_of_chunk - 1) / 2])
 			pb(stack_b, stack_a);
-		else if ((*stack_a)->value <= (chunk[(size_of_chunk - 1)] / 2) && \
-		(*stack_a)->value >= chunk[0])
+		else if ((*stack_a)->value <= chunk[(size_of_chunk - 1) / 2] \
+		&& ((*stack_a)->value >= chunk[0]))
 		{
 			pb(stack_b, stack_a);
 			rb(stack_b);
@@ -78,4 +96,3 @@ int *chunk, int size_of_chunk)
 			ra(stack_a);
 	}
 }
-
