@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = #-Wall -Wextra -Werror -fsanitize=address -g3
 
 SRC = 	push_swap.c ft_lstadd_back_bonus.c ft_lstlast_bonus.c ft_lstnew_bonus.c ft_atoi.c \
 		ft_lstadd_front_bonus.c ft_swap.c ft_rotate.c ft_reverse_rotate.c ft_push.c \

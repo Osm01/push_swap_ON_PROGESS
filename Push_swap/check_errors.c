@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:29:33 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/06 12:29:49 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:30:01 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_2d_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free (array[i]);
+		i ++;
+	}
+	free (array);
+}
 
 int	check_duplicate(t_stack *stack)
 {
@@ -49,11 +62,12 @@ int	check_isfloat(int argc, char const *argv[])
 			while (argument[y][z])
 			{
 				if (argument[y][z] == ',' || argument[y][z] == '.')
-					return (1);
+					return (free_2d_array(argument), 1);
 				z ++;
 			}
 			y ++;
 		}
+		free_2d_array(argument);
 		i ++;
 	}
 	return (0);
@@ -76,10 +90,11 @@ int	check_integer(int argc, char const *argv[])
 		while (arguments[y])
 		{
 			value = ft_atoi(arguments[y]);
-			if (value > INT32_MAX || value < INT32_MIN)
-				return (1);
+			if (value > INT_MAX || value < INT_MIN)
+				return (free_2d_array(arguments), 1);
 			y ++;
 		}
+		free_2d_array(arguments);
 		i ++;
 	}
 	return (0);

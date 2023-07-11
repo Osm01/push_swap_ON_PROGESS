@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:06:39 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/12 12:26:46 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:34:01 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	{
 		(*lst) = new;
 		(*lst)->prev = NULL;
+		new->next = NULL;
 	}
 }

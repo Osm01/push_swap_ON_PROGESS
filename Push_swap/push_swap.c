@@ -6,28 +6,28 @@
 /*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:15:12 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/05 16:22:00 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/11 13:30:11 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display(t_stack *stack)
+void display(t_stack *stack)
 {
 	while (stack)
 	{
-		ft_printf("=>%d\n" ,stack->value);
+		ft_printf("=>%d\n", stack->value);
 		stack = stack->next;
 	}
 }
 
-int	main(int argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
-	t_stack	*t_sa;
-	t_stack	*t_sb;
-	char	**arguments;
-	int		i;
-	int		y;
+	t_stack *t_sa;
+	t_stack *t_sb;
+	char **arguments;
+	int i;
+	int y;
 
 	i = 1;
 	t_sa = NULL;
@@ -40,7 +40,8 @@ int	main(int argc, char const *argv[])
 		y = 0;
 		while (arguments[y])
 			ft_lstadd_back(&t_sa, ft_lstnew(ft_atoi(arguments[y++])));
-		i ++;
+		free_2d_array(arguments);
+		i++;
 	}
 	if (check_duplicate(t_sa))
 		return (ft_printf("Error\n"), EXIT_FAILURE);
@@ -55,5 +56,7 @@ int	main(int argc, char const *argv[])
 		algo_for_100(&t_sa, t_sb);
 	else if (i <= 500)
 		algo_for_500(&t_sa, t_sb);
-	return (0);
+	/*printf("\nDISPLAY STACK SORTED\n");
+	display(t_sa);*/
+	return (EXIT_SUCCESS);
 }

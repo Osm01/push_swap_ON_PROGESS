@@ -6,7 +6,7 @@
 /*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:18:57 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/30 17:11:17 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/10 16:20:18 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void		move_stack_b_to_push_to_a(t_stack **stack_b, t_stack **stack_a, \
 			int top_count_to_max, int button_count_to_max);
 int			handle_instruction_push_to_a(t_stack **stack_b, t_stack **stack_a, \
 			int max, int max_prev);
+void		free_2d_array(char **array);
 #endif
