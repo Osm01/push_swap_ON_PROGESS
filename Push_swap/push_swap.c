@@ -6,18 +6,26 @@
 /*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:15:12 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/11 13:30:11 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:42:16 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void display(t_stack *stack)
+void	free_all_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	while (stack)
+	t_stack *tmp;
+	while ((*stack_a))
 	{
-		ft_printf("=>%d\n", stack->value);
-		stack = stack->next;
+		tmp = (*stack_a);
+		(*stack_a) = (*stack_a)->next;
+		free (tmp);
+	}
+	while ((*stack_b))
+	{
+		tmp = (*stack_b);
+		(*stack_b) = (*stack_b)->next;
+		free (tmp);
 	}
 }
 
@@ -56,7 +64,6 @@ int main(int argc, char const *argv[])
 		algo_for_100(&t_sa, t_sb);
 	else if (i <= 500)
 		algo_for_500(&t_sa, t_sb);
-	/*printf("\nDISPLAY STACK SORTED\n");
-	display(t_sa);*/
+	//free_all_stack(&t_sa, &t_sb);
 	return (EXIT_SUCCESS);
 }

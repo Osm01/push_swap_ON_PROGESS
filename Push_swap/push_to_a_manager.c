@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_to_a_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:58:11 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/07 17:58:17 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:27:27 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,32 @@ int max, int max_prev)
 	int	button_count_to_max;
 	int	top_count_to_max_prev;
 	int	button_count_to_max_prev;
+	int	count_elements;
 
+	count_elements = count_move_to_do(*stack_b);
 	top_count_to_max = count_move_to_do_from_top(*stack_b, max);
 	button_count_to_max = count_move_to_do(*stack_b) - top_count_to_max;
 	top_count_to_max_prev = count_move_to_do_from_top(*stack_b, max_prev);
 	button_count_to_max_prev = count_move_to_do(*stack_b) - \
 	top_count_to_max_prev;
-	if (top_count_to_max < top_count_to_max_prev)
-		return (move_stack_b_to_push_to_a(stack_b, stack_a, \
-		top_count_to_max, button_count_to_max), max);
+	if (top_count_to_max <= (count_elements / 2) || top_count_to_max_prev <= (count_elements / 2))
+	{
+		if (top_count_to_max < top_count_to_max_prev)
+			return (move_stack_b_to_push_to_a(stack_b, stack_a, \
+			top_count_to_max, button_count_to_max), max);
+		else
+			return (move_stack_b_to_push_to_a(stack_b, stack_a, \
+			top_count_to_max_prev, button_count_to_max_prev), max_prev);
+	}
 	else
-		return (move_stack_b_to_push_to_a(stack_b, stack_a, \
-		top_count_to_max_prev, button_count_to_max_prev), max_prev);
+	{
+		if (button_count_to_max < button_count_to_max_prev)
+			return (move_stack_b_to_push_to_a(stack_b, stack_a, \
+			top_count_to_max, button_count_to_max), max);
+		else
+			return (move_stack_b_to_push_to_a(stack_b, stack_a, \
+			top_count_to_max_prev, button_count_to_max_prev), max_prev);
+	}
+		
 }
 
