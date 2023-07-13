@@ -6,26 +6,19 @@
 /*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:15:12 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/12 15:42:16 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/11 13:30:11 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all_stack(t_stack **stack_a, t_stack **stack_b)
+void	display(t_stack *stack)
 {
-	t_stack *tmp;
-	while ((*stack_a))
+	ft_printf("\nDISPLAY STACK\n");
+	while (stack)
 	{
-		tmp = (*stack_a);
-		(*stack_a) = (*stack_a)->next;
-		free (tmp);
-	}
-	while ((*stack_b))
-	{
-		tmp = (*stack_b);
-		(*stack_b) = (*stack_b)->next;
-		free (tmp);
+		ft_printf("=>%d\n", stack->value);
+		stack = stack->next;
 	}
 }
 
@@ -60,10 +53,9 @@ int main(int argc, char const *argv[])
 		algo_for_3(&t_sa);
 	else if (i == 4 || i == 5)
 		algo_for_5_and_4(&t_sa, t_sb);
-	else if (i <= 100)
+	else if (i >= 6 &&i <= 100)
 		algo_for_100(&t_sa, t_sb);
-	else if (i <= 500)
+	else if (i >= 101 && i <= 500)
 		algo_for_500(&t_sa, t_sb);
-	//free_all_stack(&t_sa, &t_sb);
 	return (EXIT_SUCCESS);
 }

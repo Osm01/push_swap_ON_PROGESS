@@ -14,11 +14,15 @@
 
 void	push(t_stack **dst, t_stack **src)
 {
+	t_stack *tmp;
+
 	if ((*src))
 	{
+		tmp = (*src);
 		ft_lstadd_front(dst, ft_lstnew((*src)->value));
 		(*src)->prev = NULL;
 		(*src) = (*src)->next;
+		free (tmp);
 	}
 }
 

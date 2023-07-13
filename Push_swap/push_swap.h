@@ -63,4 +63,5 @@ void		move_stack_b_to_push_to_a(t_stack **stack_b, t_stack **stack_a, \
 int			handle_instruction_push_to_a(t_stack **stack_b, t_stack **stack_a, \
 			int max, int max_prev);
 void		free_2d_array(char **array);
+void		free_double_point_array(int **array, int nummber_chunk);
 #endif

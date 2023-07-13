@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-void displays(t_stack *stack)
-{
-	ft_printf("\nDisplay STACK\n");
-	while (stack)
-	{
-		ft_printf("=>%d\n", stack->value);
-		stack = stack->next;
-	}
-}
-
 void	push_to_stack_b_500(t_stack **stack_a, t_stack **stack_b, int *array, int start, int chunk)
 {
 	int	i;
@@ -58,7 +48,7 @@ int *array, int size_of_array)
 
 	index_current_max = size_of_array - 1;
 	index_current_max_prev = index_current_max - 1;
-	while (index_current_max >= 0)
+	while (index_current_max >= 0 )
 	{
 		if (index_current_max_prev < 0)
 			index_current_max_prev = 0;
@@ -108,4 +98,5 @@ void	algo_for_500(t_stack **stack, t_stack *stack_b)
 		i ++;
 	}
 	push_back_to_stack_a_500(stack, stack_b, array, size_of_arrays);
+	free (array);
 }

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   leaks_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 16:03:35 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/12 14:15:32 by ouidriss         ###   ########.fr       */
+/*   Created: 2023/07/13 20:14:13 by ouidriss          #+#    #+#             */
+/*   Updated: 2023/07/13 20:14:20 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_front(t_stack	**stack, t_stack *new)
+void	free_double_point_array(int **array, int nummber_chunk)
 {
-	t_stack	*tmp;
+	int	i;
 
-	tmp = (*stack);
-	if (!new)
-		return ;
-	if (!(*stack))
-		(*stack) = new;
-	else
+	i = 0;
+	while (i < nummber_chunk)
 	{
-		new->next = tmp;
-		tmp->prev = new;
-		(*stack) = new;
+		free (array[i]);
+		i ++;
 	}
-	(*stack)->prev = NULL;
+	free (array);
 }

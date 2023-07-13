@@ -72,4 +72,6 @@ void	algo_for_100(t_stack **stack, t_stack *stack_b)
 	}
 	push_back_to_stack_a(stack, stack_b, split_array_chunks, \
 	(size_of_arrays / 4));
+	free(array);
+	free_double_point_array(split_array_chunks, 4);
 }
