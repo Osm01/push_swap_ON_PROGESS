@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 15:15:12 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/14 14:55:46 by chdid            ###   ########.fr       */
+/*   Created: 2023/07/14 15:19:53 by ouidriss          #+#    #+#             */
+/*   Updated: 2023/07/14 19:10:57 by chdid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
+#include "checker.h"
 
 int main(int argc, char const *argv[])
 {
-	t_stack *t_sa;
+    t_stack *t_sa;
 	t_stack *t_sb;
 	char **arguments;
 	int i;
@@ -37,16 +36,8 @@ int main(int argc, char const *argv[])
 	}
 	if (check_duplicate(t_sa))
 		return (ft_printf("Error\n"), EXIT_FAILURE);
-	i = count_elements_alloc(t_sa);
-	if (i == 2)
-		algo_for_2(&t_sa);
-	else if (i == 3)
-		algo_for_3(&t_sa);
-	else if (i == 4 || i == 5)
-		algo_for_5_and_4(&t_sa, t_sb);
-	else if (i >= 6 &&i <= 100)
-		algo_for_100(&t_sa, t_sb);
-	else if (i >= 101 && i <= 500)
-		algo_for_500(&t_sa, t_sb);
-	return (EXIT_SUCCESS);
+	read_operation_and_execute_them(&t_sa, &t_sb);
+    return 0;
 }
+
+
