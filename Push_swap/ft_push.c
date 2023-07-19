@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:05:39 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/30 13:05:31 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/19 20:33:12 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_stack **dst, t_stack **src)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if ((*src))
 	{

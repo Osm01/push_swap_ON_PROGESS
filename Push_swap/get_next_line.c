@@ -69,7 +69,7 @@ char	*set_remaing_result(char *bf)
 	}
 	if (bf[i] == '\0' || bf[i + 1] == '\0')
 		return (NULL);
-	return (ft_strdup(bf + (i + 1)));
+	return (ft_strdupp(bf + (i + 1)));
 }
 
 char	*set_full_line(char *bf)

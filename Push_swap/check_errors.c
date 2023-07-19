@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 12:29:33 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/10 16:30:01 by chdid            ###   ########.fr       */
+/*   Created: 2023/07/14 20:07:06 by ouidriss          #+#    #+#             */
+/*   Updated: 2023/07/19 20:23:01 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,35 @@ int	check_isfloat(int argc, char const *argv[])
 	return (0);
 }
 
+int	check_ischar(int argc, char const *argv[])
+{
+	int			i;
+	int			y;
+	int			z;
+	char		**arg;
+
+	i = 1;
+	while (i < argc)
+	{
+		y = 0;
+		arg = ft_split(argv[i], 32);
+		while (arg[y])
+		{
+			z = 0;
+			while (arg[y][z] != '\0')
+			{
+				if (arg[y][z] < '0' || arg[y][z] > '9')
+					return (1);
+				z ++;
+			}
+			y ++;
+		}
+		free_2d_array(arg);
+		i ++;
+	}
+	return (0);
+}
+
 int	check_integer(int argc, char const *argv[])
 {
 	int			i;
@@ -80,6 +109,8 @@ int	check_integer(int argc, char const *argv[])
 	int long	value;
 	char		**arguments;
 
+	if (check_ischar(argc, argv))
+		return (1);
 	if (check_isfloat(argc, argv))
 		return (1);
 	i = 1;

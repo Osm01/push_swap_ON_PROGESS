@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:03:40 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/11 01:24:52 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/19 20:34:40 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*behind_last;
 
-    last = NULL;
-    behind_last = NULL;
+	last = NULL;
+	behind_last = NULL;
 	if (!stack || !(*stack))
 		return ;
 	last = ft_lstlast(*stack);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:18:57 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/10 16:20:18 by chdid            ###   ########.fr       */
+/*   Updated: 2023/07/19 21:58:04 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,21 @@ typedef struct stack
 	struct stack	*next;
 	struct stack	*prev;
 }				t_stack;
+typedef struct helper
+{
+	int	start;
+	int	end;
+	int	max;
+	int	prev;
+	int	pp;
+	int	re;
+	int	t_max;
+	int	t_prev;
+	int	t_pp;
+	int	b_max;
+	int	b_prev;
+	int	b_pp;
+}				t_helper;
 
 t_stack		*ft_lstnew(int content);
 t_stack		*ft_lstlast(t_stack *lst);
@@ -58,10 +73,12 @@ int			check_duplicate(t_stack *stack);
 int			check_integer(int argc, char const *argv[]);
 void		sort_left_stack_a(t_stack **stack_a, t_stack *stack_b);
 int			count_move_to_do_from_top(t_stack *stack_b, int value_to_searsh);
-void		move_stack_b_to_push_to_a(t_stack **stack_b, t_stack **stack_a, \
+void		push_to_a(t_stack **stack_b, t_stack **stack_a, \
 			int top_count_to_max, int button_count_to_max);
-int			handle_instruction_push_to_a(t_stack **stack_b, t_stack **stack_a, \
+int			push_a_manager(t_stack **stack_b, t_stack **stack_a, \
 			int max, int max_prev);
+int			push_a_manager_500(t_stack **stack_b, t_stack **stack_a, \
+			int *ar, t_helper *h);
 void		free_2d_array(char **array);
 void		free_double_point_array(int **array, int nummber_chunk);
 #endif

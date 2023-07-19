@@ -12,15 +12,6 @@
 
 #include "push_swap.h"
 
-void	display_nor(t_stack *stack)
-{
-	while (stack)
-	{
-		ft_printf("=>%d\n", stack->value);
-		stack = stack->next;
-	}
-}
-
 void	sort_left_stack_a(t_stack **stack_a, t_stack *stack_b)
 {
 	int	count;

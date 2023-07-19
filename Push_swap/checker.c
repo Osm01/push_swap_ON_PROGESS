@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chdid <chdid@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 15:19:53 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/14 19:10:57 by chdid            ###   ########.fr       */
+/*   Created: 2023/07/14 20:07:06 by ouidriss          #+#    #+#             */
+/*   Updated: 2023/07/14 21:58:34 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int main(int argc, char const *argv[])
+int	main(int argc, char const *argv[])
 {
-    t_stack *t_sa;
-	t_stack *t_sb;
-	char **arguments;
-	int i;
-	int y;
+	t_stack	*t_sa;
+	t_stack	*t_sb;
+	char	**arguments;
+	int		i;
+	int		y;
 
 	i = 1;
 	t_sa = NULL;
@@ -37,7 +37,5 @@ int main(int argc, char const *argv[])
 	if (check_duplicate(t_sa))
 		return (ft_printf("Error\n"), EXIT_FAILURE);
 	read_operation_and_execute_them(&t_sa, &t_sb);
-    return 0;
+	return (EXIT_SUCCESS);
 }
-
-
