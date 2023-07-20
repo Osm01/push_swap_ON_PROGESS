@@ -6,24 +6,11 @@
 /*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:07:06 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/19 20:23:01 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:37:10 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_2d_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free (array[i]);
-		i ++;
-	}
-	free (array);
-}
 
 int	check_duplicate(t_stack *stack)
 {
@@ -73,31 +60,48 @@ int	check_isfloat(int argc, char const *argv[])
 	return (0);
 }
 
+int	ischar(char **arg)
+{
+	int	i;
+	int	y;
+
+	i = 0;
+	while (arg[i])
+	{
+		y = 0;
+		while (arg[i][y] != '\0')
+		{
+			if ((arg[i][y] == '-' || arg[i][y] == '+') && y == 0)
+				y ++;
+			else
+			{
+				if ((arg[i][y] == '-' || arg[i][y] == '+') && arg[i][y] == 32)
+					return (1);
+			}
+			if (!(arg[i][y] >= '0' && arg[i][y] <= '9'))
+				return (1);
+			y ++;
+		}
+		i ++;
+	}
+	return (0);
+}
+
 int	check_ischar(int argc, char const *argv[])
 {
 	int			i;
-	int			y;
-	int			z;
 	char		**arg;
 
 	i = 1;
 	while (i < argc)
 	{
-		y = 0;
 		arg = ft_split(argv[i], 32);
-		while (arg[y])
-		{
-			z = 0;
-			while (arg[y][z] != '\0')
-			{
-				if (arg[y][z] < '0' || arg[y][z] > '9')
-					return (1);
-				z ++;
-			}
-			y ++;
-		}
+		if (!(*arg))
+			return (1);
+		if (ischar(arg))
+			return (1);
 		free_2d_array(arg);
-		i ++;
+		i++;
 	}
 	return (0);
 }
