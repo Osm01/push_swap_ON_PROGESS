@@ -99,7 +99,7 @@ int	check_ischar(int argc, char const *argv[])
 		if (!(*arg))
 			return (1);
 		if (ischar(arg))
-			return (1);
+			return (free_2d_array(arg), 1);
 		free_2d_array(arg);
 		i++;
 	}

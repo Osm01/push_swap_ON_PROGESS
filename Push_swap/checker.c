@@ -12,6 +12,12 @@
 
 #include "checker.h"
 
+void	check_empty_arg(int argc)
+{
+	if (argc == 1)
+		exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char const *argv[])
 {
 	t_stack	*t_sa;
@@ -23,6 +29,7 @@ int	main(int argc, char const *argv[])
 	i = 1;
 	t_sa = NULL;
 	t_sb = NULL;
+	check_empty_arg(argc);
 	if (check_integer(argc, argv) || argc == 1)
 		return (ft_printf("Error\n"), EXIT_FAILURE);
 	while (i < argc)

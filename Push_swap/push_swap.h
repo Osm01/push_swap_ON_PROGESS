@@ -48,10 +48,13 @@ int long	ft_atoi(const char *str);
 void		ft_lstadd_front(t_stack	**stack, t_stack *new);
 void		sa(t_stack **stack_a);
 void		sb(t_stack **stack_a);
+void		ss(t_stack **stack_a, t_stack **stack_b);
 void		ra(t_stack **stack_a);
 void		rb(t_stack **stack_b);
+void		rr(t_stack **stack_a, t_stack **stack_b);
 void		rra(t_stack **stack_a);
 void		rrb(t_stack **stack_b);
+void		rrr(t_stack **stack_a, t_stack **stack_b);
 void		pa(t_stack **dst, t_stack **src);
 void		pb(t_stack **dst, t_stack **src);
 void		algo_for_2(t_stack **stack);
@@ -81,4 +84,6 @@ int			push_a_manager_500(t_stack **stack_b, t_stack **stack_a, \
 			int *ar, t_helper *h);
 void		free_2d_array(char **array);
 void		free_double_point_array(int **array, int nummber_chunk);
+void		free_stack(t_stack **stack);
+
 #endif

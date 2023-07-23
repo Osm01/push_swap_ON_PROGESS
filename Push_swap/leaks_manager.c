@@ -37,3 +37,16 @@ void	free_2d_array(char **array)
 	}
 	free (array);
 }
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	tmp = NULL;
+	while ((*stack))
+	{
+		tmp = (*stack);
+		(*stack) = (*stack)->next;
+		free(tmp);
+	}
+}

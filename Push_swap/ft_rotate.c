@@ -35,3 +35,9 @@ void	rb(t_stack **stack_b)
 	rotate(stack_b);
 	ft_printf("rb\n");
 }
+
+void	rr(t_stack **stack_a, t_stack **stack_b)
+{
+	ra(stack_a);
+	rb(stack_b);
+}

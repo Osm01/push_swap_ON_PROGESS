@@ -1,8 +1,8 @@
 NAME = push_swap
-NAME_BONUS = checker_push_swap
+NAME_BONUS = checker
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=adress -g3
 
 SRC = 	push_swap.c ft_lstadd_back_bonus.c ft_lstlast_bonus.c ft_lstnew_bonus.c ft_atoi.c \
 		ft_lstadd_front_bonus.c ft_swap.c ft_rotate.c ft_reverse_rotate.c ft_push.c \
@@ -14,7 +14,7 @@ S_BONUS = checker.c ft_lstadd_back_bonus.c ft_lstlast_bonus.c ft_lstnew_bonus.c 
 		ft_lstadd_front_bonus.c ft_swap.c ft_rotate.c ft_reverse_rotate.c ft_push.c \
 		ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putnbr_unsigned.c ft_convert_hex.c \
 		ft_split.c ft_substr.c check_errors.c get_next_line.c get_next_line_utils.c checker_manager.c\
-		strcmp.c push_to_b.c
+		strcmp.c push_to_b.c leaks_manager.c
 
 OBJ_SRC = $(SRC:.c=.o)
 OBJ_BONUS = $(S_BONUS:.c=.o)

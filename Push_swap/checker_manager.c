@@ -51,6 +51,12 @@ void	execute_operation(t_stack **stack_a, t_stack **stack_b, char *op)
 		push(stack_a, stack_b);
 	if (!ft_strcmp(op, "pb\n"))
 		push(stack_b, stack_a);
+	if (!ft_strcmp(op, "rr\n"))
+		return (rotate(stack_a), rotate(stack_b));
+	if (!ft_strcmp(op, "rrr\n"))
+		return (reverse_rotate(stack_a), reverse_rotate(stack_b));
+	if (!ft_strcmp(op, "ss\n"))
+		return (swap(stack_a), swap(stack_b));
 }
 
 void	read_operation_and_execute_them(t_stack **stack_a, t_stack **stack_b)
@@ -65,11 +71,14 @@ void	read_operation_and_execute_them(t_stack **stack_a, t_stack **stack_b)
 		if (ft_strcmp(line, "sa\n") && ft_strcmp(line, "sb\n") && \
 		ft_strcmp(line, "ra\n") && ft_strcmp(line, "rb\n") && \
 		ft_strcmp(line, "rra\n") && ft_strcmp(line, "rrb\n") \
-		&& ft_strcmp(line, "pa\n") && ft_strcmp(line, "pb\n"))
+		&& ft_strcmp(line, "pa\n") && ft_strcmp(line, "pb\n") \
+		&& ft_strcmp(line, "rrr\n") && ft_strcmp(line, "rr\n") \
+		&& ft_strcmp(line, "ss\n"))
 		{
 			return (ft_printf("Error\n"), exit(1));
 		}
 		execute_operation(stack_a, stack_b, line);
+		free (line);
 		line = get_next_line(STDIN_FILENO);
 		if (!line)
 			return (check_is_stack_order((*stack_a)));
