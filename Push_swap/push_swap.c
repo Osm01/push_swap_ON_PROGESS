@@ -6,7 +6,7 @@
 /*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 15:15:12 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/19 20:06:11 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/25 22:20:31 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ void	check_stack_is_sorted(t_stack *stack_a)
 		exit(EXIT_FAILURE);
 }
 
-void	cases(t_stack *stack_a, t_stack *stack_b)
+void	cases(t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
 
-	i = count_elements_alloc(stack_a);
+	i = count_elements_alloc(*stack_a);
 	if (i == 2)
-		algo_for_2(&stack_a);
+		algo_for_2(stack_a);
 	else if (i == 3)
-		algo_for_3(&stack_a);
+		algo_for_3(stack_a);
 	else if (i == 4 || i == 5)
-		algo_for_5_and_4(&stack_a, stack_b);
+		algo_for_5_and_4(stack_a, *stack_b);
 	else if (i >= 6 && i <= 100)
-		algo_for_100(&stack_a, stack_b);
+		algo_for_100(stack_a, *stack_b);
 	else if (i >= 101 && i <= 500)
-		algo_for_500(&stack_a, stack_b);
+		algo_for_500(stack_a, *stack_b);
 }
 
 int	main(int argc, char const *argv[])
@@ -76,5 +76,5 @@ int	main(int argc, char const *argv[])
 	}
 	if (check_duplicate(t_sa))
 		return (ft_printf("Error\n"), EXIT_FAILURE);
-	return (check_stack_is_sorted(t_sa), cases(t_sa, t_sb), EXIT_SUCCESS);
+	return (check_stack_is_sorted(t_sa), cases(&t_sa, &t_sb), 0);
 }

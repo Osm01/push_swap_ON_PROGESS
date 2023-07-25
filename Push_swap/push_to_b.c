@@ -6,7 +6,7 @@
 /*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 18:27:50 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/07/19 22:13:35 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/25 22:16:25 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	**split_array_by_4(int *a, int size_of_array)
 	int		i;
 	int		start;
 
-	split = (int **)malloc(sizeof(int *) * 4);
+	split = (int **)malloc(sizeof(int *) * (4 + 1));
 	i = 0;
 	start = 0;
 	while (i < 4)
@@ -52,6 +52,7 @@ int	**split_array_by_4(int *a, int size_of_array)
 		start += (size_of_array / 4);
 		i ++;
 	}
+	split[i] = 0;
 	return (split);
 }
 

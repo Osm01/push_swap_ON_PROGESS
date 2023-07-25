@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ouidriss <ouidriss@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ouidriss <ouidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:11:35 by ouidriss          #+#    #+#             */
-/*   Updated: 2023/06/19 12:11:42 by ouidriss         ###   ########.fr       */
+/*   Updated: 2023/07/25 22:00:32 by ouidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	*sort_in_array(t_stack *stack)
 
 	i = 0;
 	count = count_elements_alloc(stack);
-	array = (int *) malloc(sizeof(int) * count);
+	array = (int *) malloc(sizeof(int) * (count));
 	while (i < count && stack)
 	{
 		array[i ++] = stack->value;
